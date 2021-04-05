@@ -72,10 +72,8 @@ public class Item {
         return(arrAksi);
     }
 
-    public void setObjGameInfo(GameInfo objGameInfo) {
-        this.objGameInfo = objGameInfo;
-    }
-
+    //setter getter
+    public void setObjGameInfo(GameInfo objGameInfo) { this.objGameInfo = objGameInfo; }
     public void setObjRuangan(Ruangan objRuangan) {
         this.objRuangan = objRuangan;
     }

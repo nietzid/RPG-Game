@@ -11,6 +11,7 @@ public class Player {
     private Scanner sc = new Scanner(System.in);
     protected GameInfo objGameInfo;
 
+    //constructor
     public Player(String nama) {
         this.nama = nama;
         arrItem = new ArrayList<>();
@@ -31,6 +32,7 @@ public class Player {
         return(false); //tidak ketemu
     }
 
+    //informasi player
     public void printPlayer() {
         System.out.println("Nama Player:"+nama);
         System.out.println("Kesehatan Player:"+kesehatan);

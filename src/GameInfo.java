@@ -1,7 +1,7 @@
 //variabel2 global
 public class GameInfo {
     private Boolean isGameOver = false;
-    private Player objPlayer;
+    private Player objPlayer; //player aktif
     private Ruangan objRuangan; //ruangan aktif
 
     public Ruangan getObjRuangan() {

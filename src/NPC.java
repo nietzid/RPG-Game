@@ -10,7 +10,7 @@ public class NPC extends Player{
         super(nama);
         //init kunci
         objKunci = new Item("Kunci");
-        objKunci.setDeskripsi("Sebuah kunci kecil yang sudah agak berkarat");
+        objKunci.setDeskripsi("Sebuah kunci kecil yang sudah agak berkarat"); // deskripsi dipindahkan kesini
 
         //aksi npc
         arrAksi.add("Perkenalan dgn NPC");

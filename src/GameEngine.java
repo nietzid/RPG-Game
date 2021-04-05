@@ -28,6 +28,7 @@ public class GameEngine {
 
         objPlayer.setObjGameInfo(objGameInfo);
 
+        //deklarasi cincin dan roti dipindahkan kesini supaya lebih modular
         objCincin.setDeskripsi("Cincin emas bertuliskan suatu kalimat..");
         objPlayer.getArrItem().add(objCincin);
         objCincin.setObjGameInfo(objPlayer.getObjGameInfo());
@@ -39,7 +40,7 @@ public class GameEngine {
     }
 
 
-    private void aksi() {
+    private void aksi() { //menu awal
         System.out.println();
         System.out.println("==============================================");
         System.out.println("1. Aksi yang dapat dilakukan di ruangan");

@@ -29,7 +29,7 @@ public class Ruangan {
         objPintu = new Pintu();
         objNPC = new NPC("nina");
         //tambah item ke array
-        arrItem.add(objPintu);
+        arrItem.add(objPintu); //sekarang pintu bisa dimasukan ke arrItem karena polymorphism
     }
 
     //aksi yang dapat dilakukan di ruangan

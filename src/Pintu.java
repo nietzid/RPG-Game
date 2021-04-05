@@ -11,7 +11,7 @@ public class Pintu extends Item{
         arrAksi.add("Deskripsikan pintu");
         arrAksi.add("Coba buka pintu");
     }
-    @Override
+    @Override //override prosesAksi di class super (Item)
     public void prosesAksi(int subPil) {
         //1: deskripsikan
         //2: buka pintu
@@ -30,7 +30,7 @@ public class Pintu extends Item{
         }
     }
 
-    @Override
+    @Override //override getAksi di class super (Item)
     public ArrayList<String> getAksi() {
         return(arrAksi);
     }
