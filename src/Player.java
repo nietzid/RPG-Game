@@ -4,36 +4,16 @@ import java.util.Scanner;
 import static java.lang.String.format;
 
 public class Player {
-    //item defulat yang dimiliki player
-    private Item objCincin = new Item("Cincin Emas");
+    //item default yang dimiliki player
     private ArrayList<Item> arrItem;
-    private Ruangan ruanganAktif;  //ruangan tempat player saat ini berada
     private int kesehatan = 100;
-    private String nama = "budiwati";
+    protected String nama;
     private Scanner sc = new Scanner(System.in);
-    private GameInfo objGameInfo;
+    protected GameInfo objGameInfo;
 
-    public int getKesehatan() {
-        return kesehatan;
-    }
-
-    public void setKesehatan(int kesehatan) {
-        this.kesehatan = kesehatan;
-    }
-
-    public GameInfo getObjGameInfo() {
-        return objGameInfo;
-    }
-
-    public void setObjGameInfo(GameInfo objGameInfo) {
-        this.objGameInfo = objGameInfo;
-        objCincin.setObjGameInfo(objGameInfo);
-    }
-
-    public Player() {
+    public Player(String nama) {
+        this.nama = nama;
         arrItem = new ArrayList<>();
-        objCincin.setDeskripsi("Cincin emas bertuliskan suatu kalimat..");
-        arrItem.add(objCincin);
     }
 
     public void addItem(Item objItem) {
@@ -117,22 +97,37 @@ public class Player {
             Item objItemPilih = arrItem.get(pil-1);
             objItemPilih.prosesAksi(subPil); //aksi item
         }
-//        System.out.println("2. Item milik player");
-//        System.out.print("Pilihan anda?");
-//        int pil = sc.nextInt();
-//        System.out.println("--");
-//        if (pil==1) {
-//            printPlayer();
-//        } else if (pil==2) {
-//            printItem();
-//        }
     }
 
-    public void setRuanganAktif(Ruangan ruanganAktif) {
-        this.ruanganAktif = ruanganAktif;
-    }
-    public Ruangan getRuanganAktif() {
-        return ruanganAktif;
+    public int getKesehatan() {
+        return kesehatan;
     }
 
+    public void setKesehatan(int kesehatan) {
+        this.kesehatan = kesehatan;
+    }
+
+    public GameInfo getObjGameInfo() {
+        return objGameInfo;
+    }
+
+    public void setObjGameInfo(GameInfo objGameInfo) {
+        this.objGameInfo = objGameInfo;
+    }
+
+    public ArrayList<Item> getArrItem() {
+        return arrItem;
+    }
+
+    public void setArrItem(ArrayList<Item> arrItem) {
+        this.arrItem = arrItem;
+    }
+
+    public String getNama() {
+        return nama;
+    }
+
+    public void setNama(String nama) {
+        this.nama = nama;
+    }
 }

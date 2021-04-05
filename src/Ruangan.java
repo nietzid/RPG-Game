@@ -7,7 +7,6 @@ public class Ruangan {
 
     private Pintu objPintu;
     private NPC objNPC; 
-    private Item  objRoti;
     private ArrayList<Item> arrItem = new ArrayList<>();
     private String deskripsi;
     private GameInfo objGameInfo;
@@ -28,14 +27,9 @@ public class Ruangan {
         // init ruangan
         // init pintu, kunci dan roti.
         objPintu = new Pintu();
-        objNPC = new NPC();
-
-        objRoti  = new Item("Roti");
-        objRoti.setDeskripsi("Roti rasa coklat dalam bungkusan plastik");
-        objRoti.setObjRuangan(this);
-
+        objNPC = new NPC("nina");
         //tambah item ke array
-        arrItem.add(objRoti);
+        arrItem.add(objPintu);
     }
 
     //aksi yang dapat dilakukan di ruangan
@@ -61,23 +55,11 @@ public class Ruangan {
                 System.out.printf("%d%d. %s %n", urutPil, subPil, strPil);
             }
         }
-
-
-        // aksi2 PINTU
-        //belum menggunakan inheritance, jadi masih perlu penanganan terpisah untuk item spesifik seperti pintu
-        urutPil++;
-        subPil = 0;
-        int pilPintu  = urutPil; //catat untuk pintu
-        System.out.println("Pintu");
-        for (String strPil:objPintu.getAksi()) {
-            subPil++;
-            System.out.printf("%d%d. %s %n", urutPil, subPil, strPil);
-        }
         
         // aksi2 NPC
         urutPil++;
         subPil = 0;
-        int pilNPC  = urutPil; //catat untuk pintu
+        int pilNPC  = urutPil;
         System.out.println("NPC");
         for (String strPil:objNPC.getAksi()) {
             subPil++;
@@ -89,19 +71,18 @@ public class Ruangan {
         System.out.println("--");
 
         //split pilihan dan subpilihan
-
-        int pil    =  Integer.parseInt(strPil.substring(0,1)); //ambil digit pertama, asumsikan jumlah tidak lebih dari 10
-        subPil     =  Integer.parseInt(strPil.substring(1,2)); //ambil digit kedua, asumsikan jumlah tidak lebih dari 10
-
-        //tdk perlu if spt ini kalau sudah menggunakan inheritance
-        if (pil ==pilPintu) {
-            objPintu.prosesAksi(subPil);  //aksi pintu
-        } else if (pil==pilNPC) {
-            objNPC.prosesAksi(subPil);
-        } else {
-            //item
-            Item objItemPilih = arrItem.get(pil-1);
-            objItemPilih.prosesAksi(subPil); //aksi item
+        try {
+            int pil = Integer.parseInt(strPil.substring(0, 1)); //ambil digit pertama, asumsikan jumlah tidak lebih dari 10
+            subPil = Integer.parseInt(strPil.substring(1, 2)); //ambil digit kedua, asumsikan jumlah tidak lebih dari 10
+            if (pil == pilNPC) {
+                objNPC.prosesAksi(subPil);
+            } else {
+                //item
+                Item objItemPilih = arrItem.get(pil - 1);
+                objItemPilih.prosesAksi(subPil); //aksi item
+            }
+        }catch (StringIndexOutOfBoundsException e){
+            System.out.println("Pilihan tidak ada!");
         }
 
     }
@@ -123,4 +104,11 @@ public class Ruangan {
         this.deskripsi = deskripsi;
     }
 
+    public ArrayList<Item> getArrItem() {
+        return arrItem;
+    }
+
+    public void setArrItem(ArrayList<Item> arrItem) {
+        this.arrItem = arrItem;
+    }
 }

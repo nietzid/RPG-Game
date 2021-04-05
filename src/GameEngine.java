@@ -3,9 +3,13 @@ import java.util.Scanner;
 public class GameEngine {
     // user interface game
     Scanner sc = new Scanner(System.in);
-    Player objPlayer = new Player();
+    Player objPlayer = new Player("budiwati");
     Ruangan objRuangan = new Ruangan(); //cuma satu ruangan
     GameInfo objGameInfo = new GameInfo();
+    Item objCincin = new Item("Cincin Emas");
+    Item objRoti = new Item("Roti");
+
+
 
     public static void main(String[] args) {
         GameEngine objGameEngine;
@@ -15,14 +19,23 @@ public class GameEngine {
 
     //constructor
     public GameEngine() {
-        //init ruangannya
+        //init game
         objRuangan.setObjGameInfo(objGameInfo);
         objRuangan.setDeskripsi("Ruangan kecil, dengan satu pintu dan jendela");
-        objPlayer.setRuanganAktif(objRuangan);  //set ruangan aktif player
-        objPlayer.setObjGameInfo(objGameInfo);
 
         objGameInfo.setObjPlayer(objPlayer);
         objGameInfo.setObjRuangan(objRuangan);
+
+        objPlayer.setObjGameInfo(objGameInfo);
+
+        objCincin.setDeskripsi("Cincin emas bertuliskan suatu kalimat..");
+        objPlayer.getArrItem().add(objCincin);
+        objCincin.setObjGameInfo(objPlayer.getObjGameInfo());
+
+        objRoti.setDeskripsi("Roti rasa coklat dalam bungkusan plastik");
+        objRoti.setObjRuangan(objRuangan);
+        objRuangan.getArrItem().add(objRoti);
+        objRuangan.setObjGameInfo(objPlayer.getObjGameInfo());
     }
 
 

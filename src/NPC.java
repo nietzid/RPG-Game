@@ -1,13 +1,13 @@
 import java.util.ArrayList;
 
-public class NPC {
+public class NPC extends Player{
     //kunci dipindahkan dari ruangan
     private Item  objKunci;
     private ArrayList<String> arrAksi = new ArrayList<>();
-    private GameInfo objGameInfo;
     private boolean isKenal = false;
 
-    public NPC() {
+    public NPC(String nama) {
+        super(nama);
         //init kunci
         objKunci = new Item("Kunci");
         objKunci.setDeskripsi("Sebuah kunci kecil yang sudah agak berkarat");
@@ -15,14 +15,13 @@ public class NPC {
         //aksi npc
         arrAksi.add("Perkenalan dgn NPC");
         arrAksi.add("Minta kunci");
-
     }
 
     public void prosesAksi(int subPil) {
         //1: perkenalan dengan npc
         //2: buka pintu
         if (subPil == 1) {
-            System.out.println("Halo saya penjaga pintu ini");
+            System.out.println("Halo saya penjaga pintu ini, nama saya " + nama);
             isKenal = true;
         } else if (subPil == 2) {
             if (isKenal) {

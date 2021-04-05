@@ -1,18 +1,15 @@
 import java.util.ArrayList;
 
 public class Item {
-    private String deskripsi;
+    protected String deskripsi;
     private String nama;
-    private ArrayList<String> arrAksi = new ArrayList<>(); //pilihan aksi untuk item
+    protected ArrayList<String> arrAksi = new ArrayList<>(); //pilihan aksi untuk item
     private Ruangan objRuangan;  //ruangan tempat item, jika null artinya item dipegang npc atau plyaer
-    private GameInfo objGameInfo;
+    protected GameInfo objGameInfo;
 
     //constructor
     public Item(String nama) {
         this.nama = nama;
-        // -- dipindahkan karena dinamik tergantung diambil atau dibuang
-        //  arrAksi.add("Deskripsi Item");
-        //  arrAksi.add("Ambil item");
     }
 
     public void prosesAksi(int pil) {
@@ -61,18 +58,18 @@ public class Item {
     }
 
     public ArrayList<String> getAksi() {
+        arrAksi.clear();
         //aksi dinamik tergantung ada di ruangan atau dipegang player/npc
-        ArrayList<String> arrOut = new ArrayList<>();
         if (objRuangan==null) {
             //ada di player, ada opsi buang
-            arrOut.add("Deskripsi Item");
-            arrOut.add("Buang item");
+            arrAksi.add("Deskripsi Item");
+            arrAksi.add("Buang item");
         } else {
             //ada di ruangan ada opsi ambil
-            arrOut.add("Deskripsi Item");
-            arrOut.add("Ambil item");
+            arrAksi.add("Deskripsi Item");
+            arrAksi.add("Ambil item");
         }
-        return(arrOut);
+        return(arrAksi);
     }
 
     public void setObjGameInfo(GameInfo objGameInfo) {
