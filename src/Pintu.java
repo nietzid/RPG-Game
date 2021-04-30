@@ -3,7 +3,6 @@ import java.util.ArrayList;
 
 public class Pintu extends Item{
 
-    //constrcutor
     public Pintu() {
         super("Pintu");
         deskripsi = "Pintu berwarna merah dengan tulisan 'EXIT' di atas ";
